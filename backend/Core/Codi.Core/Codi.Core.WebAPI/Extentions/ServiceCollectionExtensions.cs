@@ -1,4 +1,4 @@
-﻿using Codi._Core.DAL;
+﻿using Codi.Core.DAL;
 using Codi.Core.BL.Interfaces;
 using Codi.Core.BL.MappingProfiles;
 using Codi.Core.BL.Services;
@@ -11,7 +11,7 @@ namespace Codi.Core.WebAPI.Extentions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterCustomServices(this IServiceCollection services, IConfiguration _)
+        public static void RegisterCustomServices(this IServiceCollection services)
         {
             services
                 .AddControllers()
@@ -20,7 +20,10 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<ISampleService, SampleService>();
         }
 
-        public static void ConfigureAutoMapper(this IServiceCollection services) => services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
+        public static void AddAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
+        }
 
         public static void AddValidation(this IServiceCollection services)
         {

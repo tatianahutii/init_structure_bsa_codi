@@ -1,7 +1,8 @@
-﻿using Codi.Core.DAL.Entities;
+﻿using Codi.Core.DAL.Context;
+using Codi.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Codi._Core.DAL
+namespace Codi.Core.DAL
 {
     public class CodiCoreContext : DbContext
     {
@@ -12,8 +13,8 @@ namespace Codi._Core.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Configure();
-            //modelBuilder.Seed();
+            modelBuilder.Configure();
+            modelBuilder.Seed();
         }
     }
 }

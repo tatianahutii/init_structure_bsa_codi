@@ -8,8 +8,10 @@ builder.Services.AddControllers();
 builder.Services.AddCodiCoreContext(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.RegisterCustomServices();
+builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
-builder.Services.ConfigureAutoMapper();
+builder.Services.AddValidation();
 
 var app = builder.Build();
 

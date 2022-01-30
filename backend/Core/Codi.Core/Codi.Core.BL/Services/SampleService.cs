@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Codi._Core.DAL;
+using Codi.Core.DAL;
 using Codi.Core.BL.Interfaces;
 using Codi.Core.Common.DTO;
 using Codi.Core.DAL.Entities;
@@ -36,7 +36,7 @@ namespace Codi.Core.BL.Services
                 dst.CreatedAt = DateTime.Now;
             }));
 
-            var createdSample = _context.Add(sample);
+            var createdSample = _context.Add(sample).Entity;
             await _context.SaveChangesAsync();
 
             return _mapper.Map<SampleDto>(createdSample);
@@ -48,7 +48,7 @@ namespace Codi.Core.BL.Services
 
             var mergedSample = _mapper.Map(sampleDto, existedSample);
 
-            var updatedSample = _context.Update(mergedSample);
+            var updatedSample = _context.Update(mergedSample).Entity;
             await _context.SaveChangesAsync();
 
             return _mapper.Map<SampleDto>(updatedSample);

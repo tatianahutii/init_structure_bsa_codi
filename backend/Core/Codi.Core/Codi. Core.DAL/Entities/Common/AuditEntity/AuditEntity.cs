@@ -1,4 +1,4 @@
-﻿namespace Codi._Core.DAL.Entities
+﻿namespace Codi.Core.DAL.Entities
 {
     public abstract class AuditEntity<T> : Entity<T> where T : struct
     {

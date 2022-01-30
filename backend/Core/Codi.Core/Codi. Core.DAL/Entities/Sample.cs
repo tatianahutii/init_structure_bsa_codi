@@ -1,4 +1,4 @@
-﻿using Codi._Core.DAL.Entities;
+﻿using Codi.Core.DAL.Entities;
 
 namespace Codi.Core.DAL.Entities
 {

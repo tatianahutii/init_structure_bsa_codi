@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Codi._Core.DAL;
+using Codi.Core.DAL;
 
 namespace Codi.Core.BL.Services
 {

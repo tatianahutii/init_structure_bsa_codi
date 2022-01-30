@@ -9,7 +9,6 @@ namespace Codi.Core.BL.MappingProfiles
         public SampleProfile()
         {
             CreateMap<Sample, SampleDto>();
-
             CreateMap<SampleDto, Sample>();
             CreateMap<NewSampleDto, Sample>();
         }
