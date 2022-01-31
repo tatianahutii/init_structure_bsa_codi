@@ -11,6 +11,5 @@ export class LandingPageComponent implements OnInit {
   constructor(private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
-    this.spinnerService.show();
   }
 }
