@@ -3,7 +3,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { BaseComponent } from './components/base/base.component';
+import { BaseComponent } from './base/base.component';
 
 @NgModule({
     imports: [

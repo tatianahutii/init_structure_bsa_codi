@@ -11,12 +11,12 @@ export class AppComponent {
         private router: Router,
         private spinner: SpinnerService,
     ) {
-        this.router.events.subscribe(this.navigationInterceptor);
+        this.router.events.subscribe(() => this.navigationInterceptor);
     }
 
     private navigationInterceptor = (event: RouterEvent) => {
         if (event instanceof NavigationStart) {
-            this.spinner.show(true);
+            this.spinner.show();
         }
         if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
             this.spinner.hide();

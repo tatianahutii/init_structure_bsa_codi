@@ -15,7 +15,8 @@ export class BroadcastHubService {
 
     constructor(
         private hubFactory: SignalRHubFactoryService
-    ) { }
+    ) {
+     }
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
@@ -27,7 +28,7 @@ export class BroadcastHubService {
     }
 
     async stop() {
-        await this.hubConnection.stop();
+        await this.hubConnection?.stop();
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 

@@ -1,28 +1,15 @@
-import { Injectable, ComponentRef, ComponentFactoryResolver } from '@angular/core';
-import { HelperService } from './helper.service';
-import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/loading-spinner.component';
+import { Injectable, ViewContainerRef } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SpinnerService {
-    private spinnerComponentrRef: ComponentRef<LoadingSpinnerComponent>;
 
-    constructor(
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private helper: HelperService,
-    ) { }
+    private isLoading$$ = new BehaviorSubject<boolean>(false);
+    isLoading$ = this.isLoading$$.asObservable();
 
-    show(overlay?: boolean) {
-        if (!this.spinnerComponentrRef || this.spinnerComponentrRef.hostView.destroyed) {
-            this.spinnerComponentrRef = this.helper.attachComponentToBody(LoadingSpinnerComponent, this.componentFactoryResolver);
-        }
+    constructor() { }
 
-        this.spinnerComponentrRef.instance.overlay = overlay;
-        return this.spinnerComponentrRef;
-    }
+    show = () => this.isLoading$$.next(true);
 
-    hide() {
-        if (this.spinnerComponentrRef && !this.spinnerComponentrRef.hostView.destroyed) {
-            this.helper.detachComponentFromBody(this.spinnerComponentrRef);
-        }
-    }
+    hide = () => this.isLoading$$.next(false);
 }

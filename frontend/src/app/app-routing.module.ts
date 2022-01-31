@@ -9,9 +9,9 @@ const routes: Routes = [
                 .then(m => m.LandingModule),
     },
     {
-        path: 'home',
-        loadChildren: () => import('./modules/home/home.module')
-            .then(m => m.HomeModule),
+        path: 'main',
+        loadChildren: () => import('./modules/main/main.module')
+            .then(m => m.MainModule),
     },
     { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

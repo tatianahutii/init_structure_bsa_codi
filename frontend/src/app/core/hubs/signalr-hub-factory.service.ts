@@ -15,7 +15,7 @@ export class SignalRHubFactoryService {
 
     createHub(hubUrl: string) {
         if (this.hubLookup.has(hubUrl)) {
-            return this.hubLookup.get(hubUrl);
+            return this.hubLookup.get(hubUrl)!;
         }
 
         const hub = this.buildHub(hubUrl);
