@@ -17,25 +17,25 @@ services:
         ConnectionStrings__codiCoreDBConnection: 'Server=sql_server;Database=CodiCoreDB;User ID=SA;Password=MySecretPassword!'
         ElasticConfiguration__Uri: 'http://elasticsearch:9200'
 
-  # codi_notifier:
-  #     build:
-  #       context: ./backend
-  #       dockerfile: ./Codi.Notifier/Dockerfile
-  #       args:
-  #         - PROJECT_PORT=5070
-  #     container_name: 'codi_notifier'
-  #     restart: on-failure
-  #     ports:
-  #         - "5070:5070"
-  #     networks:
-  #         - back
-  #     environment:
-  #         ASPNETCORE_ENVIRONMENT: 'Development'
+  codi_notifier:
+      build:
+        context: ./backend
+        dockerfile: ./Codi.Notifier/Dockerfile
+        args:
+          - PROJECT_PORT=5070
+      container_name: 'codi_notifier'
+      restart: on-failure
+      ports:
+          - "5070:5070"
+      networks:
+          - back
+      environment:
+          ASPNETCORE_ENVIRONMENT: 'Development'
 
   codi_client:
     depends_on:
         - codi_core
-        # - codi_notifier
+        - codi_notifier
     build:
         context: ./frontend
         dockerfile: Dockerfile.dev
