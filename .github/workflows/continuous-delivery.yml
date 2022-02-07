@@ -3,6 +3,8 @@ name: Continuous Delivery
 on:
   push:
     branches: [ master ]
+    # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build_core_service:
@@ -88,5 +90,5 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.HOST_USERNAME }}
-        key: ${{ secrets.HOST_KEY }}
-        script: docker-compose -f docker-compose.apps.prod.yml stop && docker-compose -f docker-compose.apps.prod.yml pull && docker system prune -f && docker-compose -f docker-compose.apps.prod.yml up -d
+        password: ${{ secrets.HOST_PASSWORD }}
+        script: cd ~/init_structure_bsa_codi && docker-compose -f docker-compose.apps.prod.yml stop && docker-compose -f docker-compose.apps.prod.yml pull && docker system prune -f && docker-compose -f docker-compose.apps.prod.yml up -d
